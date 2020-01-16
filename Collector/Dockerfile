@@ -5,7 +5,7 @@ EXPOSE 8080
 ADD requirements.txt /
 RUN pip install -r requirements.txt
 
-ADD api.yaml /
+ADD api.yml /
 
 ADD app.py /
 

@@ -56,6 +56,16 @@ class Oas3Handler(tornado.web.RequestHandler, ABC):
 
 
 class RedmineActionablesHandler(tornado.web.RequestHandler, ABC):
+    def set_default_headers(self):
+        self.set_header("Access-Control-Allow-Origin", "*")
+        self.set_header("Access-Control-Allow-Headers", "x-requested-with")
+        self.set_header('Access-Control-Allow-Methods', 'GET, OPTIONS')
+
+    def options(self):
+        # no body
+        self.set_status(204)
+        self.finish()
+
     def get(self):
         try:
             redmineurl = self.get_argument('url', None)
